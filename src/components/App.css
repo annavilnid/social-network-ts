@@ -6,4 +6,7 @@
   grid-template-columns: 15vw auto;
   grid-template-rows: 5vw auto;
   grid-gap: 1vw;
+  /*-------
+   */
+/*  background-color: black;*/
 }

@@ -1,7 +1,13 @@
 import React from "react";
 import style from'./Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
-export const Profile = () => {
+import {DataType} from "../App";
+
+export type MyPostsType = {
+  posts: DataType["posts"]
+}
+
+export const Profile: React.FC<MyPostsType> = (props) => {
   return (
     <div className={style.profile}>
       <img className={style.picture}
@@ -11,7 +17,7 @@ export const Profile = () => {
       <div>
         ava + description
       </div>
-      <MyPosts />
+      <MyPosts posts={props.posts} />
     </div>
   );
 }

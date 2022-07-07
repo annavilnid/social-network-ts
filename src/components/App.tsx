@@ -9,13 +9,35 @@ import {News} from "./News/News";
 import {Music} from "./Music/Music";
 import {Settings} from "./Settings/Settings";
 
-const App = () => {
+export type DataType = {
+  posts: Array<MyPostType>
+  dialogs: Array<DialogType>
+  messages: Array<MessageType>
+}
+
+export type MyPostType = {
+  id: number
+  message: string
+  likesCounter: number
+};
+
+type DialogType = {
+  id: number
+  name: string
+}
+
+type MessageType = {
+  id: number
+  message: string
+}
+
+const App: React.FC<DataType> = (props) => {
   return (
     <div className="wrapper">
       <Header/>
       <Navbar/>
-      <Route path='/dialogs' component={Dialogs} />
-      <Route path='/profile' component={Profile} />
+      <Route path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages}/> } />
+      <Route path='/profile' render={() => <Profile posts={props.posts}/>} />
       <Route path='/news' component={News} />
       <Route path='/music' component={Music} />
       <Route path='/settings' component={Settings} />
